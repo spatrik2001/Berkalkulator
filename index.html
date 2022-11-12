@@ -13,21 +13,10 @@
           <a class="navbar-brand mx-auto" href="https://github.com/spatrik2001/Berkalkulator" target="_blank">Forrás</a>
         </div>
     </nav>
-    <!-- Üres bruttó bér esetén -->
+    <!-- Üres bruttó bér vagy 0 esetén -->
     <div class="toast-container d-inline align-items-center position-fixed top-0 end-0 p-3">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body">
-                A bruttó bér mező nem lehet üres!
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-    <!-- 0 bruttó bér esetén -->
-    <div class="toast-container d-inline align-items-center position-fixed top-0 end-0 p-3">
-        <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body">
-                A bruttó bér mező nem lehet 0 vagy annál kisebb!
-            </div>
+            <div class="toast-body">A bruttó bér mező nem lehet üres vagy nulla!</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
@@ -36,11 +25,14 @@
         <h4 class="fw-bolder text-uppercase text-danger">Bérkalkulátor</h4>
         <p class="fs-5">Számold ki, hogy megtudd mennyi a nettó béred/mennyit kapsz kézhez!</p>
         <p class="fw-bold fs-4 text-uppercase">Írd be a bruttó összeget</p>
-        <div class="w-25 mx-auto pt-3">
-            <input type="text" class="form-control" id="bruttoInput" value="">
+        <div class="col-md-2 mx-auto pt-3">
+            <div class="input-group">
+                <input type="number" class="form-control" id="bruttoInput" value="">
+                <span class="input-group-text">Ft</span>
+            </div>
             <label class="form-label fs-6 text-uppercase fw-bold">Bruttó bér</label>
         </div>
-        <button type="button" id="berButton" class="btn btn-dark text-uppercase fw-bold mt-2 mb-4" onclick="nettoCalculator()">Számol</button>
+        <button type="button" id="berButton" class="btn btn-dark text-uppercase fw-bold mt-2 mb-4" onclick="nettoCalculator('bruttoInput','nettoOsszeg')">Számol</button>
         <div class="row fs-6 fw-bold">
             <div class="col text-warning">
                 <p>15% jövedelemadó</p>
@@ -51,8 +43,11 @@
                 <p>****</p>
             </div>
         </div>
-        <div class="w-25 mx-auto pt-2">
-            <input type="text" class="form-control" id="nettoOsszeg" value="" readonly>
+        <div class="col-md-2 mx-auto pt-2">
+            <div class="input-group">
+                <input type="number" class="form-control" id="nettoOsszeg" value="" readonly>
+                <span class="input-group-text">Ft</span>
+            </div>
             <label class="form-label fs-6 text-uppercase fw-bold">Nettó bér</label>
         </div>
         <hr class="mx-auto w-75">
@@ -60,7 +55,7 @@
             <div class="container-fluid text-white bg-black">
                 <div class="row">
                     <div class="col py-2">
-                        <p class="text-center">2022 &copy; spatrik2001</p>
+                        <p class="text-center" id="ev"></p>
                     </div>
                 </div>
             </div>
